@@ -1,0 +1,9 @@
+target/
+ui/node_modules/
+ui/dist/
+ui/*.tsbuildinfo
+src/main/resources/META-INF/resources/app/
+.playwright-mcp/
+test-upload.txt
+.env
+*.log
