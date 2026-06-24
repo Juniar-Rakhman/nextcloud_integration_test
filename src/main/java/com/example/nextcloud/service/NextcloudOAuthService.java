@@ -100,10 +100,14 @@ public class NextcloudOAuthService {
 
     public OAuthStatus getStatus() {
         UserToken token = userConnectionStore.getToken();
-        if (token == null) {
-            return new OAuthStatus(false, null);
+        if (token != null) {
+            return new OAuthStatus(true, token.getUsername());
         }
-        return new OAuthStatus(true, token.getUsername());
+        AdminConfig config = adminConfigStore.getConfig();
+        if (config != null && config.getClientSecret() != null) {
+            return new OAuthStatus(true, "optimus (app password)");
+        }
+        return new OAuthStatus(false, null);
     }
 
     public void disconnect() {

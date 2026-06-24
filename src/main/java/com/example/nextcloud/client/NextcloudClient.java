@@ -58,6 +58,12 @@ public class NextcloudClient {
         return new ExchangeResponse(resp.getStatus(), resp.readEntity(String.class));
     }
 
+    public ExchangeResponse requestSignature(String accessToken, String jsonBody) throws Exception {
+        Response resp = buildApi().requestSignature(
+                "Bearer " + accessToken, "true", "json", jsonBody);
+        return new ExchangeResponse(resp.getStatus(), resp.readEntity(String.class));
+    }
+
     public record ExchangeResponse(int statusCode, String body) {
     }
 }

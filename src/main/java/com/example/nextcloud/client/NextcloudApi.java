@@ -60,4 +60,15 @@ public interface NextcloudApi {
                        @PathParam("userId") String userId,
                        @PathParam("filename") String filename,
                        byte[] data);
+
+    // POST https://{nextcloud}/ocs/v2.php/apps/libresign/api/v1/request-signature
+    // Creates a signature request on LibreSign. Body is JSON with the base64-encoded
+    // PDF, file name, signer info, and status.
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/ocs/v2.php/apps/libresign/api/v1/request-signature")
+    Response requestSignature(@HeaderParam("Authorization") String auth,
+                              @HeaderParam("OCS-APIRequest") String ocsApiRequest,
+                              @QueryParam("format") String format,
+                              String jsonBody);
 }

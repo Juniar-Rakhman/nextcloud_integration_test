@@ -16,6 +16,14 @@ export interface UploadResult {
   error: string | null
 }
 
+export interface SignRequestResult {
+  success: boolean
+  uuid: string | null
+  nodeId: string | null
+  name: string | null
+  error: string | null
+}
+
 export interface LoginResponse {
   redirectUrl: string
 }
